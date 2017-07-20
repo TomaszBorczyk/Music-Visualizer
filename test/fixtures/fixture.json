@@ -1,0 +1,28 @@
+{
+  "collections": {
+
+    "users": [
+      {
+        "username": "kowalsky",
+        "email": "kowalsky@email.com",
+        "password": "password",
+        "tracks":
+        [{
+            "name": "Tehu",
+            "link": "youtu.be/tehu"
+        }]
+      },
+
+      {
+        "username": "TB",
+        "email": "tb@email.com",
+        "password": "sword",
+        "tracks":
+        [{
+            "name": "Smoke on the water",
+            "link": "youtu.be/smoke"
+        }]
+      }
+    ]
+  }
+}
