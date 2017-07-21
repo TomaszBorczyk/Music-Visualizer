@@ -4,14 +4,15 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { VideoComponentComponent } from './video-component/video-component.component';
+import { MusicComponentComponent } from './music-component/music-component.component';
 import { AudioContextModule } from 'angular-audio-context';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    VideoComponentComponent
+    MusicComponentComponent
   ],
   imports: [
     BrowserModule,

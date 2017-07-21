@@ -1,0 +1,23 @@
+
+  .wrapper{
+    text-align: center;
+    .visualizer{
+    }
+    .controls{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+      .trackTimeline{
+        height: 1px;
+        width: 80%;
+        background-color: rgb(102, 102, 102);
+      }
+      .volumeController{
+        height: 20px;
+        width: 20px;
+        background: red;
+      }
+    }
+  }
