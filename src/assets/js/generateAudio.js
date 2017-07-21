@@ -3,13 +3,46 @@ var audioVisualizer ={
 
   init:  function(){
       console.log("generate vis");
-      player = document.getElementById('player');
       canvas = document.getElementById('visualizer');
       canvasCtx = canvas.getContext("2d");
+      var duration;
+
+      player = document.getElementById('player');
+      player.addEventListener("canplaythrough", function () {
+        duration = player.duration;
+      }, false);
 
       //controls
       play = document.getElementById('play');
       play.addEventListener('click', audioVisualizer.controls.play);
+
+      trackHead = document.getElementById('trackHead');
+      player.addEventListener("timeupdate", timeUpdate, false);
+
+      timeline = document.getElementById('trackTimeline');
+      timeline.addEventListener('click', function(event){
+        console.log(getClickPercent(event));
+        moveTrackHead(event);
+        player.currentTime = duration * getClickPercent(event);
+
+      })
+
+      function getClickPercent(event){
+
+          return (event.clientX - timeline.getBoundingClientRect().left)/timeline.clientWidth;
+      }
+
+      function moveTrackHead(event){
+        var newMargin = getClickPercent(event);
+
+        trackHead.style.marginLeft = newMargin +'%';
+      }
+
+
+      function timeUpdate() {
+      	var playPercent = 100 * (player.currentTime / duration);
+      	trackHead.style.marginLeft = playPercent + "%";
+      }
 
       window.addEventListener('resize', resizeCanvas, false);
 

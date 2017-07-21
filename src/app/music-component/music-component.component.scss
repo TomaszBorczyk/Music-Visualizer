@@ -4,15 +4,24 @@
     .visualizer{
     }
     .controls{
+      padding-top: 20px;
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
       align-items: center;
       justify-content: space-between;
-      .trackTimeline{
+      #trackTimeline{
         height: 1px;
         width: 80%;
         background-color: rgb(102, 102, 102);
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        #trackHead{
+          width: 3px;
+          height: 20px;
+          background-color: rgb(0, 120, 100);
+        }
       }
       .volumeController{
         height: 20px;

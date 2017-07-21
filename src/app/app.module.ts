@@ -5,8 +5,6 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MusicComponentComponent } from './music-component/music-component.component';
-import { AudioContextModule } from 'angular-audio-context';
-
 
 
 @NgModule({
@@ -18,7 +16,6 @@ import { AudioContextModule } from 'angular-audio-context';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AudioContextModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Inject, Injectable } from '@angular/core';
-import { AudioContext  } from 'angular-audio-context';
 
 declare var audioVisualizer : any;
 
@@ -26,16 +25,14 @@ export class MusicComponentComponent implements OnInit {
 
   generateObj:any;
 
-  constructor(@Inject(AudioContext) private audioContext) { }
-
   ngOnInit() {
 
-    audioVisualizer.init();
-    audioVisualizer.visualize();
+
   };
 
   ngAfterViewInit() {
-
+    audioVisualizer.init();
+    audioVisualizer.visualize();
   }
 
 
