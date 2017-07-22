@@ -23,6 +23,7 @@ var audioVisualizer ={
       timeline = document.getElementById('trackTimelineWrapper');
 
       var isTrackheadDragged = false;
+      var isTrackheadDraggedTouch = false;
       var duration;
 
       player.addEventListener("canplaythrough", getDuration);
@@ -30,8 +31,13 @@ var audioVisualizer ={
 
       //controls
       play.addEventListener('click', audioVisualizer.controls.play);
+
       trackHead.addEventListener('mousedown', drag);
       window.addEventListener('mouseup', trackHeadDropped);
+
+      //touch controls
+      trackHead.addEventListener('touchstart', dragTouch);
+
 
       //get track duration
       function getDuration(){
@@ -44,13 +50,27 @@ var audioVisualizer ={
         trackHead.className = 'grabbed';
         window.addEventListener('mousemove', dragMouse);
         player.removeEventListener('timeupdate', timeUpdate);
+      }
 
+      function dragTouch(){
+        isTrackheadDraggedTouch = true;
+        trackHead.className = 'grabbed';
+        console.log('touch grab');
+        window.addEventListener('touchmove', dragMouseTouch);
+        player.removeEventListener('timeupdate', timeUpdate);
       }
 
       //update trackhead and current time when dragging
       function dragMouse(event){
         moveTrackHead(event);
         //live time update of track time in regard of trackhead position
+        player.currentTime = duration * getClickPercent(event);
+      }
+
+      function dragMouseTouch(event){
+        moveTrackHead(event);
+        //live time update of track time in regard of trackhead position
+        console.log(getClickPercent(event));
         player.currentTime = duration * getClickPercent(event);
       }
 
@@ -75,7 +95,12 @@ var audioVisualizer ={
 
       //get number [0,1] representing percent of track time
       function getClickPercent(event){
-          return (event.clientX - timeline.getBoundingClientRect().left)/timeline.clientWidth;
+        if(isTrackheadDraggedTouch==1){
+          var touchobj = event.changedTouches[0] // reference first touch point (ie: first finger)
+          var startx = parseInt(touchobj.clientX)
+          return (startx - timeline.getBoundingClientRect().left)/timeline.clientWidth;
+        }
+        else return (event.clientX - timeline.getBoundingClientRect().left)/timeline.clientWidth;
       }
 
       //move trackhead when clicked
@@ -146,11 +171,11 @@ var audioVisualizer ={
     play: function(){
       if(player.paused){
         player.play();
-        play.style.backgroundImage = 'url(../../assets/svg/play_button_clean.svg)';
+        play.style.backgroundImage = 'url(../../assets/svg/pause_button_clean.svg)';
       }
       else{
         player.pause();
-        play.style.backgroundImage = 'url(../../assets/svg/pause_button_clean.svg)';
+        play.style.backgroundImage = 'url(../../assets/svg/play_button_clean.svg)';
       }
     }, //end of play
 

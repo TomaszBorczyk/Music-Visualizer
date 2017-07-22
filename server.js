@@ -43,6 +43,10 @@ passport.deserializeUser(User.deserializeUser());
 //adding routes
 require('./server/routes/router')(app);
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
+});
+
 //connecting to database and listening on port
 if(process.env.NODE_ENV === "test"){
 	mongoose.connect(config.db_test);
