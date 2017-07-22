@@ -9,24 +9,57 @@
       flex-direction: row;
       flex-wrap: nowrap;
       align-items: center;
-      justify-content: space-between;
-      #trackTimeline{
-        height: 1px;
-        width: 80%;
-        background-color: rgb(102, 102, 102);
-        display: flex;
-        align-items: center;
-        flex-wrap: nowrap;
-        #trackHead{
-          width: 3px;
-          height: 20px;
-          background-color: rgb(0, 120, 100);
+      justify-content: space-around;
+      // background: blue;
+
+      #play{
+        background: black;
+        border: none;
+        background-image: url(../../assets/svg/play_button_clean.svg);
+        width: 30px;
+        height: 30px;
+        &:focus{
+          outline: 0;
+        }
+        // &:before{
+        //   content: url(../../assets/svg/play_button_clean.svg);
+        // }
+
+        &:before .svg{
+          width: 30px;
+          height: 30px;
+          stroke-width: 7;
+        }
+        .play{
+        }
+        .pause{
         }
       }
+      #trackTimelineWrapper{
+        padding-top: 7px;
+        padding-bottom: 7px;
+        width: 80%;
+        // background: red;
+        #trackTimeline{
+          height: 1px;
+          width: 100%;
+          background-color: rgb(71, 71, 71);
+          display: flex;
+          align-items: center;
+          flex-wrap: nowrap;
+          #trackHead{
+            width: 7px;
+            height: 30px;
+            background-color: #fff;
+          }
+        }
+      }
+
       .volumeController{
         height: 20px;
         width: 20px;
         background: red;
       }
+
     }
   }

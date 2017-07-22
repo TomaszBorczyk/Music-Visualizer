@@ -17,15 +17,23 @@
 <div class="wrapper">
   <canvas id="visualizer" #canvas></canvas>
   <div class="controls">
-    <button type="button" id="play">play</button>
-    <div id="trackTimeline">
-      <div id="trackHead">
+    <button type="button" id="play" class="play">
+      <!-- <svg class="play" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 117.79701 116.31138">
+    <path d="M2.50010578 4.02249344V20.6116616L95.3487016 66.4502065l16.80104147-8.2945842L2.50010577 4.02249343zm0 16.8651201v91.4016549l92.56954244-45.70108436L2.50010578 20.88761354z" fill="none" stroke="#fff" />
+  </svg> -->
 
+  </button>
+
+    <div id="trackTimelineWrapper">
+      <div id="trackTimeline">
+        <div id="trackHead" class="to-grab">
+        </div>
       </div>
-
     </div>
+
     <div class="volumeController">
-
     </div>
+
   </div>
+
 </div>
