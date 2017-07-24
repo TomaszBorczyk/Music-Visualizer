@@ -1,3 +1,4 @@
+@import "../../assets/mixins/prefix-mixin";
 
   .wrapper{
     text-align: center;
@@ -10,56 +11,107 @@
       flex-wrap: nowrap;
       align-items: center;
       justify-content: space-around;
-      // background: blue;
+      margin-left: 5%;
+      margin-right: 5%;
 
-      #play{
-        background: black;
-        border: none;
-        background-image: url(../../assets/svg/pause_button_clean.svg);
-        width: 30px;
-        height: 30px;
-        &:focus{
-          outline: 0;
-        }
-        // &:before{
-        //   content: url(../../assets/svg/play_button_clean.svg);
-        // }
-
-        &:before .svg{
-          width: 30px;
-          height: 30px;
-          stroke-width: 7;
-        }
-        .play{
-        }
-        .pause{
-        }
-      }
-      #trackTimelineWrapper{
+      .slider-wrapper{
         padding-top: 7px;
         padding-bottom: 7px;
-        width: 80%;
-        // background: red;
-        #trackTimeline{
+        .slider{
           height: 1px;
           width: 100%;
           background-color: rgb(71, 71, 71);
           display: flex;
           align-items: center;
           flex-wrap: nowrap;
-          #trackHead{
-            width: 7px;
-            height: 30px;
-            background-color: #fff;
+        }
+      }
+
+      .controls-head{
+        width: 7px;
+        height: 30px;
+        svg{
+          width: 7px;
+          height: 30px;
+        }
+      }
+
+      .invisible{
+        display: none;
+      }
+
+
+      button{
+        svg{
+          @include includeThing('transition', width 0.1s);
+          @include includeThing('transition', height 0.1s);
+          &:hover{
+            width: 32px;
+            height: 32px;
           }
         }
       }
 
-      .volumeController{
-        height: 20px;
-        width: 20px;
-        background: red;
+      svg{
+        path{
+          stroke: #acacac;
+        }
+        &:hover{
+          path{
+            stroke: #fff;
+          }
+        }
       }
+
+      #timelineControllsWrapper{
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        width: 80%;
+        #play, .pause, .play{
+          background: black;
+          border: none;
+          padding: 0;
+          padding-top: 3px;
+          margin-right: 5%;
+          &:focus{
+            outline: 0;
+          }
+
+        }
+        #trackTimelineWrapper{
+          height: inherit;
+          width: 100%;
+          margin-right: 5%;
+        }
+      }
+
+
+
+      #volume-wrapper{
+        width: 20%;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        #volume-controller{
+            padding-top: 3px;
+            margin-right: 10%;
+            background-color: black;
+            border: none;
+
+            &:focus{
+              outline: 0;
+            }
+        }
+        #volumeSliderWrapper{
+          height: inherit;
+          width: 80%;
+          #volume{
+
+          }
+        }
+      }
+
 
     }
   }

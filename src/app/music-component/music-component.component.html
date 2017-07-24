@@ -3,7 +3,7 @@
   id="player"
   crossOrigin="anonymous"
   src="https://mp3l.jamendo.com//?trackid=1162014&format=mp31&from=app-devsite"
-  autoplay
+  controls
   >
   Your browser does not support the <code>audio</code> element.
 </audio>
@@ -11,22 +11,58 @@
 <div class="wrapper">
   <canvas id="visualizer" #canvas></canvas>
   <div class="controls">
+
+  <div id="timelineControllsWrapper">
     <button type="button" id="play" class="pause">
-      <!-- <svg class="play" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 117.79701 116.31138">
-    <path d="M2.50010578 4.02249344V20.6116616L95.3487016 66.4502065l16.80104147-8.2945842L2.50010577 4.02249343zm0 16.8651201v91.4016549l92.56954244-45.70108436L2.50010578 20.88761354z" fill="none" stroke="#fff" />
-  </svg> -->
 
-  </button>
+      <svg xmlns="http://www.w3.org/2000/svg" class="controls-svg" id="play-icon" width="30px" height="30px" viewBox="0 0 117.79701 116.31138">
+        <path d="M2.50010578 4.02249344V20.6116616L95.3487016 66.4502065l16.80104147-8.2945842L2.50010577 4.02249343zm0 16.8651201v91.4016549l92.56954244-45.70108436L2.50010578 20.88761354z" stroke="#fff" stroke-width="5"/>
+      </svg>
 
-    <div id="trackTimelineWrapper">
-      <div id="trackTimeline">
-        <div id="trackHead" class="to-grab">
+      <svg xmlns="http://www.w3.org/2000/svg" class="controls-svg" id="pause-icon" height="30px" width="30px" class="invisible" viewBox="0 0 105.94419 105.94419" >
+        <path d="M184.63836 187.92416h11.7459m-11.7459-103.266647h11.7459m2.5 105.766647V82.157513M182.77661 190.42416V82.157513M124.76567 187.92416h11.7459m-11.7459-103.266647h11.7459m2.5 105.766647V82.157513M122.90392 190.42416V82.157513" stroke="#fff" stroke-width="5" transform="matrix(.97812 0 0 .97752 -102.747 -80.256)"/>
+      </svg>
+
+    </button>
+
+    <div id="trackTimelineWrapper" class="slider-wrapper">
+      <div id="trackTimeline" class="slider">
+        <div id="trackHead" class="to-grab controls-head">
+          <svg xmlns="http://www.w3.org/2000/svg" class="controls-svg" viewBox="0 0 27.252082 99.484369"  height="30px" width="7px">
+            <path d="M0 0v99.48437h27.25208V0zm1.85157 1.85363h16.6677v6.3495H1.85158zm18.52135 0h5.0276V97.6328h-5.0276zM1.85157 10.05468h16.6677V97.6328H1.85158z" style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;text-transform:none;text-orientation:mixed;shape-padding:0;isolation:auto;mix-blend-mode:normal" color="#06870c" font-family="sans-serif" white-space="normal" overflow="visible" solid-color="#06870c" fill-rule="evenodd"  stroke-width="5" stroke="#06870c"/>
+          </svg>
+
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="volumeController">
+
+
+  <div id="volume-wrapper">
+    <button type="button" name="button" id="volume-controller">
+
+      <svg xmlns="http://www.w3.org/2000/svg" id="0-vol" width="30px" height="30px" viewBox="0 0 131.70831 116.31082">
+        <path d="M17.33682 34.73926H2.5V81.5705h14.83682M90.90184 4.02227l-62.21998 30.717H17.33682V81.5705h11.344l62.22102 30.71802V20.8874l-44.0862 21.76454V42.376l44.0862-21.76508z" fill="none" stroke="#000" stroke-width="5"/>
+      </svg>
+
+      <svg xmlns="http://www.w3.org/2000/svg" id="muted-vol" class="invisible" viewBox="0 0 131.70831 116.31082" width="30px" height="30px">
+        <path d="M100.3907 34.73068l29.19588 46.84946m0-46.84946L100.3907 81.58014M17.33682 34.73926H2.5V81.5705h14.83682M90.90184 4.02227l-62.21998 30.717H17.33682V81.5705h11.344l62.22102 30.71802V20.8874l-44.0862 21.76454V42.376l44.0862-21.76508z" fill="none" stroke="#000" stroke-width="5"/>
+      </svg>
+
+    </button>
+
+    <div id="volumeSliderWrapper" class="slider-wrapper">
+      <div id="volume" class="slider">
+        <div id="volumeHead" class="to-grab controls-head">
+          <svg xmlns="http://www.w3.org/2000/svg" class="controls-svg" viewBox="0 0 27.252082 99.484369">
+            <path d="M0 0v99.48437h27.25208V0zm1.85157 1.85363h16.6677v6.3495H1.85158zm18.52135 0h5.0276V97.6328h-5.0276zM1.85157 10.05468h16.6677V97.6328H1.85158z" style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;text-transform:none;text-orientation:mixed;shape-padding:0;isolation:auto;mix-blend-mode:normal" color="#06870c" font-family="sans-serif" white-space="normal" overflow="visible" solid-color="#06870c" fill-rule="evenodd" fill="#06870c" stroke-width="5" stroke="#06870c"/>
+          </svg>
+        </div>
+      </div>
     </div>
+  </div>
+
 
   </div>
 

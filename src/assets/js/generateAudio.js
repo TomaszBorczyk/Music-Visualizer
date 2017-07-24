@@ -1,8 +1,14 @@
 
+//TODO: add pause/play change when track reaches its end
+// manage problem of resizing controls when hovering over button
+
+
 var audioVisualizer ={
   init: function(){
     audioVisualizer.controlsInit();
     audioVisualizer.audioAnalyseInit();
+
+    audioVisualizer.controls.startPlay();
 
     window.addEventListener('resize', resizeCanvas);
     function resizeCanvas(){
@@ -21,6 +27,14 @@ var audioVisualizer ={
       play = document.getElementById('play');
       trackHead = document.getElementById('trackHead');
       timeline = document.getElementById('trackTimelineWrapper');
+      playIcon = document.getElementById('play-icon');
+      pauseIcon = document.getElementById('pause-icon');
+
+      vol0 = document.getElementById('0-vol');
+      volMuted = document.getElementById('muted-vol');
+
+      volume = document.getElementById('volume-controller')
+
 
       var isTrackheadDragged = false;
       var isTrackheadDraggedTouch = false;
@@ -30,7 +44,8 @@ var audioVisualizer ={
       player.addEventListener("timeupdate", timeUpdate);
 
       //controls
-      play.addEventListener('click', audioVisualizer.controls.play);
+      play.addEventListener('click', audioVisualizer.controls.startPlay);
+      volume.addEventListener('click', audioVisualizer.controls.volumeMute);
 
       trackHead.addEventListener('mousedown', drag);
       window.addEventListener('mouseup', trackHeadDropped);
@@ -168,20 +183,31 @@ var audioVisualizer ={
   }, //end of visualize
 
   controls: {
-    play: function(){
+    startPlay: ()=>{
       if(player.paused){
         player.play();
-        play.style.backgroundImage = 'url(../../assets/svg/pause_button_clean.svg)';
+        pauseIcon.classList.remove('invisible');
+        playIcon.classList.add('invisible');
       }
       else{
         player.pause();
-        play.style.backgroundImage = 'url(../../assets/svg/play_button_clean.svg)';
+        pauseIcon.classList.add('invisible');
+        playIcon.classList.remove('invisible');
       }
     }, //end of play
 
+    volumeMute: ()=>{
+      if(player.muted){
+        player.muted = false;
+        vol0.classList.remove('invisible');
+        volMuted.classList.add('invisible');
+      } else{
+        player.muted = true;
+        vol0.classList.add('invisible');
+        volMuted.classList.remove('invisible');
+      }
+    }
 
   }
-
-
 
 } //end of audioVisualizer

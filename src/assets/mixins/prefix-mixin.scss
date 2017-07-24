@@ -1,0 +1,17 @@
+@mixin includeThing($activity, $properties...){
+  $length: length($properties);
+  $prop: '';
+
+  @for $i from 1 through $length{
+    $prop: #{$prop + nth($properties, $i)};
+    @if $i<$length{
+      $prop: #{$prop +', '};
+    }
+  }
+
+  -webkit-#{$activity}: $prop;
+  -moz-#{$activity}: $prop;
+  -ms-#{$activity}: $prop;
+  -o-#{$activity}: $prop;
+  #{$activity}: $prop;
+}
