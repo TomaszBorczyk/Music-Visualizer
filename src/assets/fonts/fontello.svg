@@ -1,0 +1,28 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2017 by original authors @ fontello.com</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="playhead" unicode="&#xe800;" d="M0 850v-25-975h283v1000z m50-50h184v-127l-184-128z m184-188v-712h-184v585z" horiz-adv-x="283" />
+
+<glyph glyph-name="speaker_1_sound" unicode="&#xe801;" d="M803 850l-561-277h-71-171v-22-424h171 71l561-277z m-43-69v-96l-378-186 0-49 378 186v-717l-478 236v0l-30 15h-81v360h81l30 15v0z m-717-251h85v-360h-85z m852-33v-294h43v294z" horiz-adv-x="1185" />
+
+<glyph glyph-name="speaker_2_sound" unicode="&#xe802;" d="M803 850l-561-277h-71-171v-22-424h171 71l561-277z m-43-69v-96l-378-186 0-49 378 186v-717l-478 236v0l-30 15h-81v360h81l30 15v0z m-717-251h85v-360h-85z m852-33v-294h43v294z m128 74v-442h43v442z" horiz-adv-x="1185" />
+
+<glyph glyph-name="speaker_3_sound" unicode="&#xe803;" d="M803 850l-561-277h-71-171v-22-424h171 71l561-277z m-43-69v-96l-378-186 0-49 378 186v-717l-478 236v0l-30 15h-81v360h81l30 15v0z m-717-251h85v-360h-85z m852-33v-294h43v294z m128 74v-442h43v442z m119 94v-630h43v630z" horiz-adv-x="1185" />
+
+<glyph glyph-name="speaker_muted" unicode="&#xe804;" d="M803 850l-561-277h-71-171v-22-424h171 71l561-277z m-43-69v-96l-378-186 0-49 378 186v-717l-478 236v0l-30 15h-81v360h81l30 15v0z m156-246l-37-21 95-164-95-164 37-21 83 142 82-142 37 21-94 164 94 164-37 21-82-142z m-873-5h85v-360h-85z" horiz-adv-x="1185" />
+
+<glyph glyph-name="speaker_0_sound" unicode="&#xe805;" d="M803 850l-561-277h-71-171v-22-424h171 71l561-277z m-43-69v-96l-378-186 0-49 378 186v-717l-478 236v0l-30 15h-81v360h81l30 15v0z m-717-251h85v-360h-85z" horiz-adv-x="1204" />
+
+<glyph glyph-name="pause" unicode="&#xe806;" d="M0 850v-24-976h196v1000z m553 0v-24-976h196v1000z m-506-47h102v-906h-102z m553 0h102v-906h-102z" horiz-adv-x="749" />
+
+<glyph glyph-name="play" unicode="&#xe807;" d="M0 850v-35-965l1013 500z m43-69l873-431-96-47-777 381z m0-145l728-357-728-360z" horiz-adv-x="1013" />
+
+<glyph glyph-name="speaker_0_sound-1" unicode="&#xe808;" d="M803 850l-561-277h-71-171v-22-424h171 71l561-277z m-43-69v-96l-378-186 0-49 378 186v-717l-478 236v0l-30 15h-81v360h81l30 15v0z m-717-251h85v-360h-85z" horiz-adv-x="1204" />
+</font>
+</defs>
+</svg>

@@ -1,7 +1,8 @@
 
 //TODO: add pause/play change when track reaches its end
 // manage problem of resizing controls when hovering over button
-
+// use strict
+// ES6
 
 var audioVisualizer ={
   init: function(){
@@ -30,8 +31,7 @@ var audioVisualizer ={
       playIcon = document.getElementById('play-icon');
       pauseIcon = document.getElementById('pause-icon');
 
-      vol0 = document.getElementById('0-vol');
-      volMuted = document.getElementById('muted-vol');
+      volIcon = document.getElementById('volume-icon');
 
       volume = document.getElementById('volume-controller')
 
@@ -62,15 +62,12 @@ var audioVisualizer ={
       //function to drag trackHead
       function drag(){
         isTrackheadDragged = true;
-        trackHead.className = 'grabbed';
         window.addEventListener('mousemove', dragMouse);
         player.removeEventListener('timeupdate', timeUpdate);
       }
 
       function dragTouch(){
         isTrackheadDraggedTouch = true;
-        trackHead.className = 'grabbed';
-        console.log('touch grab');
         window.addEventListener('touchmove', dragMouseTouch);
         player.removeEventListener('timeupdate', timeUpdate);
       }
@@ -93,7 +90,6 @@ var audioVisualizer ={
       function trackHeadDropped(event){
         if(isTrackheadDragged==true){
           isTrackheadDragged = false;
-          trackHead.className = 'to-grab';
           moveTrackHead(event);
           player.currentTime = duration * getClickPercent(event);
           console.log('track head dropped');
@@ -186,25 +182,25 @@ var audioVisualizer ={
     startPlay: ()=>{
       if(player.paused){
         player.play();
-        pauseIcon.classList.remove('invisible');
-        playIcon.classList.add('invisible');
+        playIcon.classList.remove('icon-play');
+        playIcon.classList.add('icon-pause');
       }
       else{
         player.pause();
-        pauseIcon.classList.add('invisible');
-        playIcon.classList.remove('invisible');
+        playIcon.classList.add('icon-play');
+        playIcon.classList.remove('icon-pause');
       }
     }, //end of play
 
     volumeMute: ()=>{
       if(player.muted){
         player.muted = false;
-        vol0.classList.remove('invisible');
-        volMuted.classList.add('invisible');
+        volIcon.className = " icon-speaker_2_sound control-icon"
+
       } else{
         player.muted = true;
-        vol0.classList.add('invisible');
-        volMuted.classList.remove('invisible');
+        volIcon.className = " icon-speaker_muted control-icon"
+
       }
     }
 
