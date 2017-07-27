@@ -1,4 +1,5 @@
 const express = require('express'),
+			cors = require('cors');
 			path = require('path'),
 			bodyParser = require('body-parser'),
 			mongoose = require('mongoose'),
@@ -22,6 +23,7 @@ app.engine('html', require('ejs').renderFile);
 app.use(express.static(path.join(__dirname, 'dist')));
 
 //app configuration
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());

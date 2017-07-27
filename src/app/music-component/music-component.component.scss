@@ -49,6 +49,12 @@
       flex-wrap: nowrap;
     }
 
+    .slider-progress{
+      height: 1px;
+      width: 0%;
+      background-color: rgb(0,120,100);
+    }
+
     //wrapper for playhead/volumehead
     .controls-head{
       background: black;
@@ -66,6 +72,9 @@
 
   }
 
+  //*****************
+  //    TIME
+  //*****************
   #timelineControllsWrapper{
     display: flex;
     flex-wrap: nowrap;
@@ -73,7 +82,8 @@
     width: 60%;
 
   }
-  #play, .pause, .play{
+
+  #play{
     background: black;
     height: 35px;
     width: 30px;
@@ -81,36 +91,20 @@
     padding: 0;
     padding-top: 3px;
     margin-right: 5%;
-
+    outline: none;
   }
+
   #trackTimelineWrapper{
     height: inherit;
     width: 100%;
     margin-right: 5%;
   }
 
-  #trackTimeline{
-    position:relative;
-    &:after{
-      content:'\A';
-      position:absolute;
-      background:red;
-      top:0; bottom:0;
-      left:0;
-      width:50%;
-    }
-
-  }
-
-  // #trackTimelineProgress{
-  //   height: 1px;
-  //   width: 10%;
-  //   background-color: red;
-  // }
 
 
-
-
+//*****************
+//    VOLUME
+//*****************
   #volume-wrapper{
     width: 40%;
     display: flex;
@@ -126,7 +120,7 @@
       background-color: black;
       border: none;
       &:focus{
-        outline: 0;
+        outline: none;
       }
   }
 

@@ -3,13 +3,13 @@
   id="player"
   crossOrigin="anonymous"
   src="https://mp3l.jamendo.com//?trackid=1162014&format=mp31&from=app-devsite"
-  controls
   >
   Your browser does not support the <code>audio</code> element.
 </audio>
 
 <div class="wrapper">
-  <canvas id="visualizer" #canvas></canvas>
+  <canvas id="visualizer">
+  </canvas>
   <div class="controls">
 
   <div id="timelineControllsWrapper">
@@ -19,9 +19,8 @@
 
     <div id="trackTimelineWrapper" class="slider-wrapper">
       <div id="trackTimeline" class="slider">
-        <!-- <div id="trackTimelineProgress">
-
-        </div> -->
+        <a id="trackTimelineProgress" class="slider-progress">
+        </a>
         <a id="trackHead" class="controls-head">
           <i class="icon-playhead"></i>
         </a>
@@ -36,6 +35,8 @@
 
     <div id="volumeSliderWrapper" class="slider-wrapper">
       <div id="volume" class="slider">
+        <a id="volumeProgress" class="slider-progress">
+        </a>
         <a id="volumeHead" class="controls-head">
           <i class="icon-playhead"></i>
         </a>

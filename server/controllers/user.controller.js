@@ -56,18 +56,19 @@ module.exports = {
       }
       console.log('user registered');
 
-      res.redirect('/');
+      // res.redirect('/');
+      res.send({success: true});
     })
   },
 
   postLogin: function(req, res){
     console.log('logged in as '+req.user.username);
-    res.redirect('/');
+    // res.redirect('/');
   },
 
   getLogout: function(req, res){
     req.logout();
-    res.redirect('/');
+    // res.redirect('/');
   },
 
   postTrack: function(req, res){

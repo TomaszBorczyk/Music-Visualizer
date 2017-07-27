@@ -8,6 +8,8 @@ import { MusicComponentComponent } from './music-component/music-component.compo
 import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { ApiService } from './services/api.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     HttpModule,
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

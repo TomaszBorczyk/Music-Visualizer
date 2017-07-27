@@ -1,0 +1,61 @@
+@import "../../assets/mixins/variables.scss";
+@import "../../assets/mixins/prefix-mixin.scss";
+
+.wrapper{
+  text-align: center;
+  margin: auto;
+}
+
+h1{
+  color: white;
+  font-size: 30px;
+}
+
+label{
+  color: white;
+  text-align: left;
+  font-size: 16px;
+}
+
+form{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+input{
+  padding: 7px;
+  width: 100%;
+  border-width: 2px;
+  border-radius: 3px;
+  border-color: black;
+  @include includeThing('transition', '0.4s');
+  &:focus{
+    outline: none;
+    background: rgb(233, 255, 252);
+    border-color: rgb(255, 255, 255);
+  }
+}
+
+.input-group{
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+
+#register-button{
+  align-self: flex-end;
+  margin-top: 20px;
+  background: $main-green;
+  border: none;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+  @include includeThing('transition', '0.3s');
+  &:hover{
+    background: lighten($main-green, 7%);
+  }
+}
