@@ -10,5 +10,6 @@ router.post('/register', UserController.postRegister);
 router.post('/login', passport.authenticate('local'), UserController.postLogin);
 router.get('/logout', UserController.getLogout);
 router.post('/track/add', isLoggedIn, UserController.postTrack);
+router.post('/check', UserController.checkUser);
 
 module.exports = router;

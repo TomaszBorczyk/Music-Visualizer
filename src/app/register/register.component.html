@@ -5,32 +5,48 @@
     Register:
   </h1>
 
-  <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+  <form [formGroup]="registerForm"  *ngIf="active"  (ngSubmit)="onSubmit()">
 
     <div class="input-group">
       <label for="username">Username:</label>
       <input type="text" id="username" value=""
-      [(ngModel)]= "user.username" #name="ngModel" name="username" required>
+      formControlName="username" required>
+      <div *ngIf="formErrors.username" class="alert alert-danger">
+        {{ formErrors.username }}
+      </div>
     </div>
 
     <div class="input-group">
       <label for="email">Email:</label>
       <input type="text" id="email" value=""
-      [(ngModel)]= "user.email" name="email" required>
+      formControlName="email" required>
+      <div *ngIf="formErrors.email" class="alert alert-danger">
+        {{ formErrors.email }}
+      </div>
     </div>
 
     <div class="input-group">
       <label for="password">Password:</label>
       <input type="password" id="password" value=""
-      [(ngModel)]= "user.password" name="password" required>
+      formControlName="password" required>
+      <div *ngIf="formErrors.password" class="alert alert-danger">
+        {{ formErrors.password }}
+      </div>
     </div>
 
     <div class="input-group">
-      <label for="re-password">Repeat password:</label>
-      <input type="password" id="re-password" value="" name="re-password">
+      <label for="rePassword">Confirm password:</label>
+      <input type="password" id="rePassword" value=""
+      formControlName="rePassword" required>
+      <div *ngIf="formErrors.rePassword" class="alert alert-danger">
+        {{ formErrors.rePassword }}
+      </div>
     </div>
 
 
-    <button type="submit" id="register-button">Register</button>
+    <button [disabled]="!registerForm.valid" type="submit" id="register-button">Register</button>
+
   </form>
+
+
 </div>

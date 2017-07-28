@@ -8,6 +8,9 @@ import { MusicComponentComponent } from './music-component/music-component.compo
 import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 import { ApiService } from './services/api.service';
 
 @NgModule({
@@ -21,6 +24,7 @@ import { ApiService } from './services/api.service';
     BrowserModule,
     FormsModule,
     HttpModule,
+    ReactiveFormsModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

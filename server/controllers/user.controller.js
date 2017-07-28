@@ -28,6 +28,29 @@ module.exports = {
     })
   },
 
+  checkUser: function(req, res){
+    var key = Object.keys(req.body)[0];
+    var value = req.body[key];
+    var object = {};
+    object[key] = value;
+    console.log(object);
+
+    User.findOne(object, function(err, user){
+      if(err){
+        res.status(400);
+        res.json({error: err.message});
+        return;
+      }
+      res.status(200);
+      if(!user){
+        res.json({found: false});
+      } else{
+        res.json({found: true});
+
+      }
+    })
+  },
+
   postUser: function(req, res){
     User.create(req.params.user, function(err, user){
       if(err){
@@ -49,7 +72,7 @@ module.exports = {
   },
 
   postRegister: function(req, res, next){
-    User.register(new User({username: req.body.username}), req.body.password, function(err){
+    User.register(new User({username: req.body.username, email: req.body.email}), req.body.password, function(err){
       if(err){
         console.log('err while registering', err);
         next(err);
