@@ -1,130 +1,141 @@
 @import "../../assets/mixins/prefix-mixin";
 
-  .wrapper{
-    text-align: center;
+input{
+  display: block;
+  margin: 0 auto;
+  color: #bbb;
+}
 
-    //prevent margin and line-height from icons
-    i{
-      line-height: 0;
-      &:before{
-        margin: 0;
-      }
+#metadata{
+  color: #bbb;
+}
+
+.wrapper{
+  text-align: center;
+  margin: 0 auto;
+
+  //prevent margin and line-height from icons
+  i{
+    line-height: 0;
+    &:before{
+      margin: 0;
     }
-
-    //controls row
-    .controls{
-      padding-top: 20px;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      align-items: center;
-      justify-content: space-around;
-      margin-left: 5%;
-      margin-right: 5%;
-    }
-
-    //button icons (play, pause, volume)
-    .control-icon{
-      color: #bbb;
-      font-size: 30px;
-      @include includeThing('transition', 0.2s);
-      &:hover{
-        color: white;
-        font-size: 32px;
-      }
-    }
-
-    //slider extension for more precise clicking
-    .slider-wrapper{
-      padding-top: 7px;
-      padding-bottom: 7px;
-    }
-
-    .slider{
-      height: 1px;
-      width: 100%;
-      background-color: rgb(71, 71, 71);
-      display: flex;
-      align-items: center;
-      flex-wrap: nowrap;
-    }
-
-    .slider-progress{
-      height: 1px;
-      width: 0%;
-      background-color: rgb(0,120,100);
-    }
-
-    //wrapper for playhead/volumehead
-    .controls-head{
-      background: black;
-      &:hover{
-        i{
-          color: white;
-        }
-      }
-    }
-
-    .icon-playhead{
-      color: #bbb;
-      font-size: 30px;
-    }
-
   }
 
-  //*****************
-  //    TIME
-  //*****************
-  #timelineControllsWrapper{
+  //controls row
+  .controls{
+    padding-top: 20px;
     display: flex;
+    flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
-    width: 60%;
-
-  }
-
-  #play{
-    background: black;
-    height: 35px;
-    width: 30px;
-    border: none;
-    padding: 0;
-    padding-top: 3px;
+    justify-content: space-around;
+    margin-left: 5%;
     margin-right: 5%;
-    outline: none;
   }
 
-  #trackTimelineWrapper{
-    height: inherit;
+  //button icons (play, pause, volume)
+  .control-icon{
+    color: #bbb;
+    font-size: 30px;
+    @include includeThing('transition', 0.2s);
+    &:hover{
+      color: white;
+      font-size: 32px;
+    }
+  }
+
+  //slider extension for more precise clicking
+  .slider-wrapper{
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+
+  .slider{
+    height: 1px;
     width: 100%;
-    margin-right: 5%;
+    background-color: rgb(71, 71, 71);
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
   }
+
+  .slider-progress{
+    height: 1px;
+    width: 0%;
+    background-color: rgb(0,120,100);
+  }
+
+  //wrapper for playhead/volumehead
+  .controls-head{
+    background: black;
+    &:hover{
+      i{
+        color: white;
+      }
+    }
+  }
+
+  .icon-playhead{
+    color: #bbb;
+    font-size: 30px;
+  }
+
+}
+
+//*****************
+//    TIME
+//*****************
+#timelineControllsWrapper{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 60%;
+
+}
+
+#play{
+  background: black;
+  height: 35px;
+  width: 30px;
+  border: none;
+  padding: 0;
+  padding-top: 3px;
+  margin-right: 5%;
+  outline: none;
+}
+
+#trackTimelineWrapper{
+  height: inherit;
+  width: 100%;
+  margin-right: 5%;
+}
 
 
 
 //*****************
 //    VOLUME
 //*****************
-  #volume-wrapper{
-    width: 40%;
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-  }
+#volume-wrapper{
+  width: 40%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
 
-  #volume-controller{
-      height: 35px;
-      width: 30px;
-      padding-bottom: 3px;
-      margin-right: 10%;
-      background-color: black;
-      border: none;
-      &:focus{
-        outline: none;
-      }
-  }
+#volume-controller{
+    height: 35px;
+    width: 30px;
+    padding-bottom: 3px;
+    margin-right: 10%;
+    background-color: black;
+    border: none;
+    &:focus{
+      outline: none;
+    }
+}
 
-  #volumeSliderWrapper{
-    height: inherit;
-    width: 80%;
-  }
+#volumeSliderWrapper{
+  height: inherit;
+  width: 80%;
+}

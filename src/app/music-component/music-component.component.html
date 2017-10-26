@@ -2,12 +2,14 @@
 <audio
   id="player"
   crossOrigin="anonymous"
-  src="https://mp3l.jamendo.com//?trackid=1162014&format=mp31&from=app-devsite"
   >
   Your browser does not support the <code>audio</code> element.
 </audio>
 
 <div class="wrapper">
+  
+  <input type="file" id="input" accept=".mp3">
+
   <canvas id="visualizer">
   </canvas>
   <div class="controls">
@@ -45,5 +47,8 @@
   </div>
 
   </div>
+
+  <div id="metadata"></div>
+  <button id="clear-metadata">Clear metadata and download</button>
 
 </div>

@@ -17,8 +17,6 @@ export class MusicComponentComponent implements OnInit {
 
   ngAfterViewInit() {
     audioVisualizer.init();
-    audioVisualizer.visualize();
-
   }
 
 

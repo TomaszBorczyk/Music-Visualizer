@@ -1,5 +1,8 @@
 
 'use strict'
+var musicmetadata = window.musicmetadata;
+var ID3Writer = window['browser-id3-writer'];
+var FileSaver = window['file-saver'];
 
 //visualization
 let canvas;
@@ -7,12 +10,14 @@ let canvasCtx;
 
 //audio tag
 let player;
+let input;
 
 //controls - buttons
 let play;
 let trackHead;
 let timeline;
 let trackTimelineProgress;
+let clearMetadata;
 
 let volume;
 let volumeHead;
@@ -28,23 +33,35 @@ let audioContext;
 let analyser;
 let source;
 
-const audioVisualizer ={
+let loadedFile;
+
+const audioVisualizer = {
 
 
   init: function(){
     audioVisualizer.controlsInit();
+    input.addEventListener("change", handleFiles, false);
     audioVisualizer.listenersInit();
     audioVisualizer.audioAnalyseInit();
 
-    audioVisualizer.controls.startPlay();
+    function handleFiles() {
+      loadedFile = event.target.files[0];
+      musicmetadata(loadedFile, function(err, result){
+        if(err) throw err;
+        console.log(result);
+        let metadata = document.getElementById('metadata');
+        metadata.innerText = JSON.stringify(result, undefined, 2);
+      });
+      player.src = URL.createObjectURL(loadedFile);
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+      audioVisualizer.controls.startPlay();
 
-    window.addEventListener('resize', resizeCanvas);
-
-    function resizeCanvas(){
-      canvas.width=window.innerWidth*0.9;
-      audioVisualizer.visualize();
+      function resizeCanvas(){
+        canvas.width=window.innerWidth*0.9;
+        audioVisualizer.visualize();
+      }
     }
-    resizeCanvas();
 
   },
 
@@ -69,6 +86,35 @@ const audioVisualizer ={
 
       volumeProgress.style.width = player.volume*100 +'%';
       volIcon.className = "icon-speaker_" + Math.min(3, Math.ceil(player.volume*10/3.33))+"_sound control-icon"
+
+      input = document.getElementById('input');
+      clearMetadata = document.getElementById('clear-metadata');
+      clearMetadata.addEventListener('click', clearMeta);
+
+      function clearMeta(){
+        console.log('clearMEta');
+        const reader = new FileReader();
+        reader.onload = function () {
+            const arrayBuffer = reader.result;
+            const writer = new ID3Writer(arrayBuffer);
+            const singleTags = [ "TIT2", "TALB", "TPE2", "TPE3", "TPE4", "TRCK", "TPOS", "TPUB", "TMED", "WCOM", "WCOP", "WOAF", "WOAR", "WOAS", "WORS", "WPAY", "WPUB"];
+            const arrayTags = ["TPE1", "TCOM", "TCON"];
+
+            singleTags.forEach(tag => writer.setFrame(tag, ''));
+            arrayTags.forEach(tag => writer.setFrame(tag, ['', '']));
+            writer.addTag();
+            const newFile = writer.arrayBuffer;
+            const blob = writer.getBlob();
+            saveAs(blob, 'song with tags.mp3');
+            // saveAs(newFile, 'no_tags.mp3');
+        };
+        reader.onerror = function () {
+            // handle error 
+            console.error('Reader error', reader.error);
+        };
+        reader.readAsArrayBuffer(loadedFile);
+          
+      }
     },
 
     listenersInit: function(){
